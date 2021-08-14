@@ -1,37 +1,34 @@
 import React, { Component } from 'react'
-import store from '../../redux/store'
 
 export default class Count extends Component {
-    // state={
-    //     count:0
-    // } 不再有自己的状态
-    // componentDidMount(){
-    //     store.subscribe(()=>{
-    //         this.setState({})
-    //     })
-    // }
+    state={
+        count:0
+    }
     add=()=>{
         const number=this.selectNumber.value
-        store.dispatch({type:'add',data:number*1})
+        const preValue=this.state.count
+        this.setState({count:preValue+number*1})//强制类型转换
     }
 
     minus=()=>{
         const number=this.selectNumber.value
-        store.dispatch({type:'minus',data:number*1})
+        const preValue=this.state.count
+        this.setState({count:preValue-Number(number)})
     }
 
     addOdd=()=>{
         const number=this.selectNumber.value
-        const preValue=store.getState()
+        const preValue=this.state.count
         if(preValue%2!==0){
-            store.dispatch({type:'add',data:number*1})
+            this.setState({count:preValue+Number(number)})
         }
     }
 
     addAsync=()=>{
         const number=this.selectNumber.value
+        const preValue=this.state.count
         setTimeout(()=>{
-            store.dispatch({type:'add',data:number*1})
+            this.setState({count:preValue+Number(number)})
         },2000)
 
     }
@@ -39,7 +36,7 @@ export default class Count extends Component {
     render() {
         return (
             <div>
-                <h1>Current value is :{store.getState()}</h1>
+                <h1>Current value is :{this.state.count}</h1>
                 <select ref={c=>this.selectNumber=c}>
                     <option value="1">1</option>
                     <option value="2">2</option>
