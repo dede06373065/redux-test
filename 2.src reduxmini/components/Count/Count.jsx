@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import store from '../../redux/store'
-import { addActionCreater, minusActionCreater} from '../../redux/count_action'
 
 export default class Count extends Component {
     // state={
@@ -13,26 +12,26 @@ export default class Count extends Component {
     // }
     add=()=>{
         const number=this.selectNumber.value
-        store.dispatch(addActionCreater(number*1))
+        store.dispatch({type:'add',data:number*1})
     }
 
     minus=()=>{
         const number=this.selectNumber.value
-        store.dispatch(minusActionCreater(number*1))
+        store.dispatch({type:'minus',data:number*1})
     }
 
     addOdd=()=>{
         const number=this.selectNumber.value
         const preValue=store.getState()
         if(preValue%2!==0){
-            store.dispatch(addActionCreater(number*1))
+            store.dispatch({type:'add',data:number*1})
         }
     }
 
     addAsync=()=>{
         const number=this.selectNumber.value
         setTimeout(()=>{
-            store.dispatch(addActionCreater(number*1))
+            store.dispatch({type:'add',data:number*1})
         },2000)
 
     }
