@@ -5,24 +5,31 @@ export default class Count extends Component {
 
     add=()=>{
         const number=this.selectNumber.value
+        this.props.add(number*1)
     }
 
     minus=()=>{
         const number=this.selectNumber.value 
+        this.props.minus(number*1)
     }
 
     addOdd=()=>{
         const number=this.selectNumber.value
+        if(this.props.count%2!==0){
+            this.props.add(number*1)
+        }
     }
 
     addAsync=()=>{
         const number=this.selectNumber.value
+        this.props.addAsync(number*1)
     }
 
     render() {
+        console.log(this.props)
         return (
             <div>
-                <h1>Current value is :???</h1>
+                <h1>Current value is :{this.props.count}</h1>
                 <select ref={c=>this.selectNumber=c}>
                     <option value="1">1</option>
                     <option value="2">2</option>
