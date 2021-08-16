@@ -22,7 +22,7 @@ export default class Count extends Component {
 
     addAsync=()=>{
         const number=this.selectNumber.value
-        this.props.addAsync(number*1,2000)
+        this.props.addAsync(number*1)
     }
 
     render() {
