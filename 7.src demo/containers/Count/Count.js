@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import {addActionCreater} from '../../redux/actions/count'
+import {addActionCreater} from '../../redux/count_action'
 
 class Count extends Component {
     add = () => {
@@ -9,7 +9,6 @@ class Count extends Component {
     render() {
         return (
             <div>
-                <h2>Count component:</h2>
                 <h2>The sum is :{this.props.count}</h2>
                 <button onClick={ this.add}>plus one</button>
             </div>
